@@ -7,8 +7,8 @@
 
 #define Relay D2            //Variable Relay is D2
 #define BLYNK_PRINT Serial
-#define ssid "Fluke"  //SSID WIFI
-#define pass "647C1306"     //PASSWORD WIFI
+#define ssid "BNK48"  //SSID WIFI
+#define pass "0922530944"     //PASSWORD WIFI
 #define LINE_TOKEN   "OK7wIuUyLwFI7XMzyLpAHP9bGaX4yk96g2cZroJlXhp" //LINE TOKEN
 Adafruit_ADS1015 ads;
 TridentTD_LineNotify myLINE(LINE_TOKEN);
@@ -33,14 +33,6 @@ int dst = 0;
 
 void Watering(void)
 {
-    /*if(check==0)
-    {
-        myLINE.notify("กำลังทำการรดน้ำต้นไม้");
-        Blynk.virtualWrite(V4, "Pump On");
-        delay(1000);
-        delay(500);
-        check++;
-    }*/
       digitalWrite(Relay, LOW);
       Blynk.virtualWrite(V4, "Watering");
       Moisture = analogRead(sensorPin);
@@ -64,8 +56,6 @@ int Blynk_print(int Moisture, int Light)
   delay(500);
 }
 
-//Blynk teminal
-  WidgetTerminal terminal(V0);
 
 void setup() {
 
