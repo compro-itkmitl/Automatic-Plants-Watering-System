@@ -31,7 +31,7 @@ int dst = 0;
   void StopMotor(void);
 
 
-void Watering(void)
+void Watering(void) // สั่งให้มอเตอร์ทำงานช่วงเวลาตามดีเล
 {
       digitalWrite(Relay, LOW);
       Blynk.virtualWrite(V4, "Watering");
@@ -40,7 +40,7 @@ void Watering(void)
 }
 
 
-void StopMotor(void)
+void StopMotor(void) // สั่งปิดมอเตอร์
 {
     myLINE.notify("หยุดการรดน้ำต้นไม้");
     Blynk.virtualWrite(V4, "Pump off");
@@ -49,7 +49,7 @@ void StopMotor(void)
 }
 
 
-int Blynk_print(int Moisture, int Light)
+int Blynk_print(int Moisture, int Light) //แสดงผลค่าแสงและค่าความชิ้นจากเซ็นเซอร์ไปในBlynk
 {
   Blynk.virtualWrite(V1, Moisture);
   Blynk.virtualWrite(V2, Light);
@@ -126,12 +126,12 @@ BLYNK_WRITE(V6)
 }
 
 //Blynk Time set
-BLYNK_WRITE(V7)
+BLYNK_WRITE(V7) // set หน่วยนาทีของtime mode
 { 
     time_min = param.asInt();
     
 }
-BLYNK_WRITE(V8)
+BLYNK_WRITE(V8) // set หน่วยชั่วโมงของtime mode
 { 
     time_hour = param.asInt();
     
@@ -189,7 +189,7 @@ void loop()
   
   //Moisture mode
   else{
-  while(Moisture<=40)
+  while(Moisture<=40) //ถ้าความชิ้นน้อยกว่า40จะทำการรดน้ำ
   {
     if(check == 0)
     {
@@ -198,7 +198,7 @@ void loop()
       myLINE.notify("กำลังทำการรดน้ำต้นไม้");
       delay(500);
     }
-    for(int i=0; i<=10; i++)
+    for(int i=0; i<=10; i++) //ทำการรดน้ำ5วินาทีแล้วทำการเช็คความชื้นใหม่
     {
       Watering();
       Moisture = analogRead(sensorPin); 
