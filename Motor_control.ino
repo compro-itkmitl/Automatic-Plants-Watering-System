@@ -94,7 +94,7 @@ void setup() {
     digitalWrite(Relay, HIGH);
 }
 
-//Blynk input control water
+//Blynk select mode
 BLYNK_WRITE(V5)
 { 
     int y = param.asInt();
@@ -110,7 +110,7 @@ BLYNK_WRITE(V5)
     }
 }
 
-//Blynk select mode
+//Blynk turn on pump
 BLYNK_WRITE(V6)
 { 
     int y = param.asInt();
